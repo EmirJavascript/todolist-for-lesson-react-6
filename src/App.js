@@ -1,7 +1,7 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import { TodoList } from './components/todo-list'
-import { startTodolist } from './data'
-import { useTodoList } from "./hooks/useTodoList";
+// import { startTodolist } from './data'
+// import { useTodoList } from "./hooks/useTodoList";
 import styled from "styled-components"
 
 const StyledTodoList = styled(TodoList)`
@@ -12,7 +12,7 @@ const StyledTodoList = styled(TodoList)`
 function App() {
   // const [todos, setTodos] = useState(startTodolist)
 
-  const { todos, toggleTodo } = useTodoList(startTodolist)
+  // const { todos, toggleTodo } = useTodoList(startTodolist)
 
   const getOverdueTodos = () => {
     const today = new Date()
@@ -50,20 +50,17 @@ function App() {
       <StyledTodoList
         title="Overdue"
         items={getOverdueTodos()}
-        onToggleTodo={toggleTodo}
-      />
+      /> 
       <StyledTodoList
         title="Actual"
         items={getActualTodos()}
-        onToggleTodo={toggleTodo}
       />
       <StyledTodoList 
         title="Completed"
         items={getCompletedTodos()}
-        onToggleTodo={toggleTodo}
       />
     </div>
-  )
+  ) 
 }
 
 
