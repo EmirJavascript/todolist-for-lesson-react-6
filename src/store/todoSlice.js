@@ -7,9 +7,10 @@ export const todoSlice = createSlice({
     items: startTodolist
   },
   reducers: {
-    toggleTodo(state, action) {
+    toggleTodo: (state, action) => {
+      console.log('state', state, 'action', action)
       state.items = state.items.map((todo) => {
-        if (todo.id === action.payload) {
+        if (todo.id === action.payload.id) {
           return { ...todo, isDone: !todo.isDone }
         } else {
           return todo

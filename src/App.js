@@ -3,6 +3,7 @@ import { TodoList } from './components/todo-list'
 // import { startTodolist } from './data'
 // import { useTodoList } from "./hooks/useTodoList";
 import styled from "styled-components"
+import { useSelector } from "react-redux";
 
 const StyledTodoList = styled(TodoList)`
   background-color: beige;
@@ -10,6 +11,7 @@ const StyledTodoList = styled(TodoList)`
 `
 
 function App() {
+  const todos = useSelector(state => state.todo.items)
   // const [todos, setTodos] = useState(startTodolist)
 
   // const { todos, toggleTodo } = useTodoList(startTodolist)
