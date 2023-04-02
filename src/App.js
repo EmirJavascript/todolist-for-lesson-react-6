@@ -65,5 +65,9 @@ function App() {
   ) 
 }
 
+// в StyledTodoList есть пропсы title и items. В последний приходят значения функций
+// сам StyledTodoList стилизован и как тег туда приходит функция TodoList из ./components/todo-list
+// переходи в ./components/todo-list  
+
 
 export default App

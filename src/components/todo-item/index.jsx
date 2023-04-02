@@ -16,10 +16,6 @@ const TodoContainer = styled.li`
   }
 `
 
-// const InputContainer = styled.input`
-  
-// `
-
 const TodoText = styled.span`
   text-decoration: ${(props) => {
     if (props.isDone) return 'line-through' 
