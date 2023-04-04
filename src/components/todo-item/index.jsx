@@ -1,30 +1,29 @@
 import styled from "styled-components"
-import { todoActions } from "../../store/todoSlice";
-import { useDispatch } from "react-redux";
+import { todoActions } from "../../store/todoSlice"
+import { useDispatch } from "react-redux"
 
 const TodoContainer = styled.li`
-  background-color: #ccc;
   list-style: none;
-  font-size: 18px;
+  background-color: #ccc;
 
   &:hover {
-    color: red;
+    color: blue;
   }
 
   & > input {
-    margin-right: 10px;
+    margin-right: 20px;
   }
 `
-
 const TodoText = styled.span`
   text-decoration: ${(props) => {
-    if (props.isDone) return 'line-through' 
+    if (props.isDone) return 'line-through'
     return 'none'
   }};
 `
 
 export const TodoItem = ({ id, text, isDone }) => {
   const dispatch = useDispatch()
+
   const handleToggleTodo = () => {
     dispatch(todoActions.toggleTodo({ id }))
   }
@@ -36,9 +35,7 @@ export const TodoItem = ({ id, text, isDone }) => {
         checked={isDone}
         onChange={handleToggleTodo}
       />
-      <TodoText isDone={isDone}>
-          {text}
-      </TodoText>
+      <TodoText isDone={isDone}>{text}</TodoText>
     </TodoContainer>
   )
 }

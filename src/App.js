@@ -1,68 +1,19 @@
-// import { useState } from 'react'
 import { TodoList } from './components/todo-list'
-// import { startTodolist } from './data'
-// import { useTodoList } from "./hooks/useTodoList";
 import styled from "styled-components"
 import { useSelector } from "react-redux";
-
-const StyledTodoList = styled(TodoList)`
-  background-color: beige;
-  margin-top: 50px;
-`
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { FormPage } from "./pages/form";
+import { HomePage } from "./pages/home";
 
 function App() {
-  const todos = useSelector(state => state.todo.items)
-  // const [todos, setTodos] = useState(startTodolist)
-
-  // const { todos, toggleTodo } = useTodoList(startTodolist)
-
-  const getOverdueTodos = () => {
-    const today = new Date()
-    return todos.filter((todo) => new Date(todo.deadline) < today && !todo.isDone)
-  }
-
-  const getActualTodos = () => {
-    const today = new Date()
-    return todos.filter((todo) => new Date(todo.deadline) >= today && !todo.isDone)
-  }
-
-  const getCompletedTodos = () => {
-    return todos.filter((todo) => todo.isDone)
-  }
-
-  // const toggleTodo = (id) => {
-  //   const updatedTodos = todos.map((todo) => {
-  //     if (todo.id === id) {
-  //       return { ...todo, isDone: !todo.isDone }
-  //     } else {
-  //       return todo
-  //     }
-  //   })
-  //   setTodos(updatedTodos)
-  // }
-
-  // const div = styled.div`
-  //   display: flex;
-
-  // `
-
   return (
-    <div>
-      <h1>Todo List</h1>
-      <StyledTodoList
-        title="Overdue"
-        items={getOverdueTodos()}
-      /> 
-      <StyledTodoList
-        title="Actual"
-        items={getActualTodos()}
-      />
-      <StyledTodoList 
-        title="Completed"
-        items={getCompletedTodos()}
-      />
-    </div>
-  ) 
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/form" element={<FormPage />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 // в StyledTodoList есть пропсы title и items. В последний приходят значения функций
