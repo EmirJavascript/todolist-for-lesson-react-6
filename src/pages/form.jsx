@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { todoFormActions } from "../store/todoFormSlice"
-import { useNavigate } from "react-router-dom";
+import { todoActions } from "../store/todoSlice"
 
 const Form = styled.form`
   border: 1px solid black;
@@ -32,19 +32,13 @@ export const FormPage = () => {
     }))
   }
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
-  // const handleSave = (e) => {
-  //   e.preventDefault()
-
-  //   fetch('http://localhost:3001/', {
-  //     method: 'POST',
-  //     body: JSON.stringify(form),
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   })
-  // }
+  const handleSave = () => {
+    dispatch(todoActions.addTodo({ text, deadline }))
+    navigate('/')
+    dispatch(todoFormActions.resetForm({ text, deadline }))
+  }
 
   return (
     <>
@@ -59,7 +53,7 @@ export const FormPage = () => {
         type="date" 
         value={deadline}
         onChange={handleChange}/>
-      <button>Save todo</button>
+      <button onClick={handleSave}>Save todo</button>
     </Form>
     </>
   )
