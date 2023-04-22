@@ -23,6 +23,8 @@ const Form = styled.form`
 export const FormPage = () => {
   const { text, deadline } = useSelector(state => state.todoForm.form)
 
+  // обращаемся к файлу todoFormSlice.js для создания нового todo в useSelector
+
   const dispatch = useDispatch()
 
   const handleChange = (e) => {
